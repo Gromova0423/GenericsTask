@@ -1,10 +1,17 @@
 import java.util.Random;
 
 public class MagicBox<T> {
-    Random random = new Random();
-    int randomInt = random.nextInt(5);
-    T[] items = (T[]) new Object[5];
+    private int size;
+    protected T[] items;
+    private Random random;
+    private int randomInt;
 
+    public MagicBox(int size) {
+        this.size = size;
+        this.items = (T[]) new Object[size];
+        this.random = new Random();
+        this.randomInt = random.nextInt(size);
+    }
 
     public boolean add(T item) {
         for (int i = 0; i < items.length; i++) {
@@ -20,7 +27,7 @@ public class MagicBox<T> {
     public <T> T pick() {
         int sum;
         int itemCount = 0;
-        T itemPick;
+        T itemPick = (T) items[randomInt];
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null) {
                 sum = i + 1;
@@ -28,7 +35,12 @@ public class MagicBox<T> {
             }
         }
         System.out.println("Осталось заполнить " + itemCount + " ячеек");
-        itemPick = (T) items[randomInt];
+        for (int i = 0; i < items.length; i++) {
+            if (itemPick == null) {
+                itemPick = (T) items[i + 1];
+            }
+        }
         return itemPick;
     }
 }
+

@@ -3,19 +3,19 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        MagicBox<String> magicBox = new MagicBox<>();
+        MagicBox<String> magicBox = new MagicBox<>(7);
         magicBox.add("Vera");
         magicBox.add("Alex");
         magicBox.add("Mary");
         magicBox.pick();
-        magicBox.add("Aron");
-        magicBox.add("David");
-        magicBox.add("Ivan");// данный обьект добавлен, показать заполненность коробки
+//        magicBox.add("Aron");
+//        magicBox.add("David");
+//        magicBox.add("Ivan");
         System.out.println("Случайное имя: " + (String) magicBox.pick());
         System.out.println(Arrays.toString(magicBox.items));
         System.out.println();
 
-        MagicBox<Integer> magicBox2 = new MagicBox<>();
+        MagicBox<Integer> magicBox2 = new MagicBox<>(5);
         magicBox2.add(200);
         magicBox2.add(300);
         magicBox2.pick();
