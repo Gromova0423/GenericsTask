@@ -20,27 +20,47 @@ public class MagicBox<T> {
                 return true;
             }
         }
-        System.out.println("Коробка заполнена");
         return false;
     }
 
+    //    public <T> T pick() {
+//        int sum;
+//        int itemCount = 0;
+//        T itemPick = (T) items[randomInt];
+//        for (int i = 0; i < items.length; i++) {
+//            if (items[i] != null) {
+//                sum = i + 1;
+//                itemCount = items.length - sum;
+//            }
+//        }
+//        System.out.println("Осталось заполнить " + itemCount + " ячеек");
+//        for (int i = 0; i < items.length; i++) {
+//            if (itemPick == null) {
+//                itemPick = (T) items[i + 1];
+//            }
+//        }
+//        return itemPick;
+//    }
     public <T> T pick() {
-        int sum;
-        int itemCount = 0;
-        T itemPick = (T) items[randomInt];
+        int sum = 0;
+        T itemPick = null;
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                sum = i + 1;
-                itemCount = items.length - sum;
+            if (items[i] == null) {
+                sum = sum + 1;
             }
         }
-        System.out.println("Осталось заполнить " + itemCount + " ячеек");
-        for (int i = 0; i < items.length; i++) {
-            if (itemPick == null) {
-                itemPick = (T) items[i + 1];
-            }
+        System.out.println("Осталось заполнить " + sum + " элемента");
+        if (sum == 0){
+            itemPick = (T) items[randomInt];
+            System.out.println("Коробка заполнена. Случайный элемент: " + itemPick);
         }
         return itemPick;
     }
+
+
 }
+
+
+
+
 
