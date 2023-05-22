@@ -23,25 +23,8 @@ public class MagicBox<T> {
         return false;
     }
 
-    //    public <T> T pick() {
-//        int sum;
-//        int itemCount = 0;
-//        T itemPick = (T) items[randomInt];
-//        for (int i = 0; i < items.length; i++) {
-//            if (items[i] != null) {
-//                sum = i + 1;
-//                itemCount = items.length - sum;
-//            }
-//        }
-//        System.out.println("Осталось заполнить " + itemCount + " ячеек");
-//        for (int i = 0; i < items.length; i++) {
-//            if (itemPick == null) {
-//                itemPick = (T) items[i + 1];
-//            }
-//        }
-//        return itemPick;
-//    }
-    public <T> T pick() {
+
+    public <T> T pick(){
         int sum = 0;
         T itemPick = null;
         for (int i = 0; i < items.length; i++) {
@@ -49,10 +32,13 @@ public class MagicBox<T> {
                 sum = sum + 1;
             }
         }
-        System.out.println("Осталось заполнить " + sum + " элемента");
+        //System.out.println("Осталось заполнить " + sum + " элемента");
         if (sum == 0){
             itemPick = (T) items[randomInt];
             System.out.println("Коробка заполнена. Случайный элемент: " + itemPick);
+        }
+        else {
+            throw new RuntimeException("Коробка не полна, осталось заполнить: " + sum + " ячеек");
         }
         return itemPick;
     }
