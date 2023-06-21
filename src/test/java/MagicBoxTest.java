@@ -1,23 +1,25 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class MagicBoxTest {
 
-    @org.junit.jupiter.api.Test
-    void add() {
+    @Test
+    void addTest_Test() {
+        MagicBox.itemsTest = new int[]{5};
+        int a = 4;
+        boolean result = MagicBox.addTest(a);
+        Assertions.assertEquals(false, result);
     }
 
-    @org.junit.jupiter.api.Test
-    void pick() {
+    @BeforeEach
+    void BeforeEach() {
+        MagicBox magicBox = new MagicBox(1000000);
+        System.out.println("Вызывем каждый раз перед тестом");
     }
 
     @AfterEach
-    void AfterEach(){
+    void AfterEach() {
         System.out.println("Вызываем после каждого метода");
     }
-
-
-
 
 
 }

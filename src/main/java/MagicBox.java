@@ -3,6 +3,7 @@ import java.util.Random;
 public class MagicBox<T> {
     public static int size;
     protected T[] items;
+    protected static int[] itemsTest;
     private Random random;
     private int randomInt;
 
@@ -17,6 +18,16 @@ public class MagicBox<T> {
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean addTest(int item) {
+        for (int i = 0; i < itemsTest.length; i++) {
+            if (itemsTest[i] == 0) {
+                itemsTest[i] = item;
                 return true;
             }
         }
